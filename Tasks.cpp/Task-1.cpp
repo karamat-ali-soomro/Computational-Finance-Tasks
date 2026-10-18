@@ -53,9 +53,7 @@ int main()
         if (GET(X, k) > h) { cross = cross + 1; }
     }
     //estimate the risk
-
     w = (double)cross / M;
-
     printf(" risk to hit loss level at %.2f is equal to %.8f\n", h, w);
 
 
@@ -68,21 +66,18 @@ int main()
         LET(X, k) = 0;
         for (t = 0; t < N; t++)
         {
-            LET(X, k) = GET(X, k) + sigma * sqrt(dt) * pnl_rng_normal(rng) + gam0 * dt;
-        }////end sampling 
+            LET(X, k) = GET(X, k) + sigma * sqrt(dt) * pnl_rng_normal(rng) + gam0 * dt; 
        //check if the barrier is crossed
         if (GET(X, k) > h) { cross = cross + 1; }
+        }////end sampling
     }
-
-    //estimate the risk
-
+    //estimate the risk prob
     w = (double)cross / M;
-
     printf(" risk to hit loss level at %.2f is equal to %.8f\n", h, w);
-
     /////////////////////end - Computing loss level hitting risk/////////////////////
 
 
+    
     /////////////////////VaR(X) computation/////////////////////
     //// Sort the vector X using PNL according to increasing order
     pnl_vect_qsort(X, 'i'); 
