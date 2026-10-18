@@ -67,20 +67,14 @@ int main()
         for (i = 0; i < j; i++)
         {
             LET(X, k) = GET(X, k) + pnl_rng_dblexp(Lp, Lm, P, rng); // draw a sample from asymmetric double exponential distribution to compute the size of the jump and add it to X[k]
-            
         }
-        
-        
         ////end sampling
 
-    //check if the barrier is crossed
-
+        //check if the barrier is crossed
         if (GET(X, k) > h) { cross = cross + 1; };
     }
     //estimate the risk
-
     w = (double) cross / M;
-
     printf("\n risk to hit loss level at %.2f is equal to %.8f\n", h, w);
 
 
@@ -101,18 +95,12 @@ int main()
                 {
                     LET(X, k) = GET(X, k) + pnl_rng_dblexp(Lp, Lm, P, rng);// draw a sample from asymmetric double exponential distribution to compute the size of the jump to compute the size of the jump and add it to X[k]
                 }
-      
-        }////end sampling
-
         //check if the barrier is crossed
-
-        if (GET(X, k) > h) { cross = cross + 1; };
-
+            if (GET(X, k) > h) { cross = cross + 1; };
+        }////end sampling
     }
     //estimate the risk
-
-    w = (double)cross / M;
-        
+    w = (double)cross / M;     
     printf(" risk to hit loss level at %.2f is equal to %.8f\n", h, w);
     /////////////////////end - Computing loss level hitting risk/////////////////////
 
