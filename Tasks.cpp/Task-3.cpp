@@ -63,21 +63,15 @@ int main()
         j = pnl_rng_poisson(lam*dt, rng); // draw a sample from the Poisson law to compute the number of jumps
         for (i = 0; i < j; i++)
         {
-            LET(X, k) = GET(X, k) + mu+delta*pnl_rng_normal(rng); // draw a sample from asymmetric double exponential distribution to compute the size of the jump and add it to X[k]
-            
+            LET(X, k) = GET(X, k) + mu+delta*pnl_rng_normal(rng); // draw a sample from asymmetric double exponential distribution to compute the size of the jump and add it to X[k]   
         }
-        
-        
         ////end sampling
 
-    //check if the barrier is crossed
-
+        //check if the barrier is crossed
         if (GET(X, k) > h) { cross = cross + 1; };
     }
     //estimate the risk
-
     w = (double) cross / M;
-
     printf("\n risk to hit loss level at %.2f is equal to %.8f\n", h, w);
 
 
@@ -98,13 +92,9 @@ int main()
                 {
                     LET(X, k) = GET(X, k) + mu + delta * pnl_rng_normal(rng);// draw a sample from asymmetric double exponential distribution to compute the size of the jump to compute the size of the jump and add it to X[k]
                 }
-      
-        }////end sampling
-
         //check if the barrier is crossed
-
-        if (GET(X, k) > h) { cross = cross + 1; };
-
+            if (GET(X, k) > h) { cross = cross + 1; };
+        }////end sampling
     }
     //estimate the risk
 
